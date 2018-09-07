@@ -52,6 +52,9 @@ public class DBProcessSerializer {
     private static final String CLIENT = "client";
     private final DateUtils dateUtils = new DateUtils();
 
+    /**
+     * Формирует процесс из resultSet
+     */
     public DBProcess deserialize(ResultSet resultSet) throws SQLException {
         int pid = resultSet.getInt(PID);
         String state = resultSet.getString(STATE) == null ? "" : resultSet.getString(STATE);
@@ -74,6 +77,9 @@ public class DBProcessSerializer {
         return new DBProcess(pid, caller, state, stateChangeDate, query);
     }
 
+    /**
+     * Формирует процесс из xml элемента
+     */
     public DBProcess deserialize(Element xmlElement, boolean elementIsRoot) {
         Element rootElement;
         if (elementIsRoot) {
@@ -117,6 +123,9 @@ public class DBProcessSerializer {
         return process;
     }
 
+    /**
+     * Формирует элемент xml из процесса
+     */
     public Element serialize(Document document, DBProcess process) {
         Element rootElement = document.createElement(ROOT_ELEMENT_TAG_NAME);
         createAndAppendElement(document, rootElement, PID, String.valueOf(process.getPid()));

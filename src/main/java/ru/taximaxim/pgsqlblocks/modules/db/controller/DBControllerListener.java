@@ -25,26 +25,33 @@ import java.sql.SQLException;
 
 public interface DBControllerListener {
 
+    //сигнал о том, что у контроллера изменился статус (fe перерисовать таблицу)
     void dbControllerStatusChanged(DBController controller, DBStatus newStatus);
 
+    //сигнал, что контроллер был подключен и с ним можно работать
     void dbControllerDidConnect(DBController controller);
 
+    //подключение
     void dbControllerWillConnect(DBController controller);
 
     void dbControllerConnectionFailed(DBController controller, SQLException exception);
 
     void dbControllerDisconnectFailed(DBController controller, boolean forcedByUser, SQLException exception);
 
+    //сигнал об отключении
     void dbControllerDidDisconnect(DBController controller, boolean forcedByUser);
 
+    //сигнал, о том, что началось обновление
     void dbControllerWillUpdateProcesses(DBController controller);
 
+    //процессы уже обновились и их нужно отрисовать
     void dbControllerProcessesUpdated(DBController controller);
 
     void dbControllerBlockedChanged(DBController controller);
 
     void dbControllerProcessesFilterChanged(DBController controller);
 
+    //журнал блокировок изменился
     void dbControllerBlocksJournalChanged(DBController controller);
 
 }

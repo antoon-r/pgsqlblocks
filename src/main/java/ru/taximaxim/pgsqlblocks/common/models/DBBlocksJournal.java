@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Само представление журнала блокровок
+ */
 public class DBBlocksJournal implements DBProcessFilterListener {
 
     private final List<DBBlocksJournalListener> listeners = new ArrayList<>();

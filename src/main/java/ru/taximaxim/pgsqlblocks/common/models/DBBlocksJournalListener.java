@@ -23,10 +23,14 @@ import java.util.List;
 
 public interface DBBlocksJournalListener {
 
+    //был добавлен процесс с блокировкой
     void dbBlocksJournalDidAddProcesses();
 
     void dbBlocksJournalDidCloseAllProcesses();
 
+    /**
+     * Что это? Когда оно вызывается?
+     */
     void dbBlocksJournalDidCloseProcesses(List<DBBlocksJournalProcess> processes);
 
     void dbBlocksJournalDidChangeFilters();

@@ -458,6 +458,9 @@ public class DBController implements DBProcessFilterListener, DBBlocksJournalLis
         listeners.forEach(listener -> listener.dbControllerBlocksJournalChanged(this));
     }
 
+    /**
+     * запускает executor
+     */
     private void asyncSaveClosedBlockedProcessesToFile(List<DBBlocksJournalProcess> processes) {
         journalsSaveExecutor.execute(() -> {
             try {
@@ -468,6 +471,9 @@ public class DBController implements DBProcessFilterListener, DBBlocksJournalLis
         });
     }
 
+    /**
+     * Сохранение заблокированных процессов в файл
+     */
     private void saveBlockedProcessesToFile(List<DBBlocksJournalProcess> processes) throws ParserConfigurationException, IOException, SAXException {
 
         String fileName = String.format("%s-%s.xml", this.model.getName(), dateUtils.dateToString(blocksJournalCreateDate));
