@@ -101,7 +101,7 @@ public class DBProcessSerializer {
         DBProcess process = new DBProcess(pid, caller, state, stateChange, query);
         Element childrenRootElement = (Element)rootElement.getElementsByTagName(CHILDREN_ELEMENT_TAG_NAME).item(0);
         NodeList childrenElements = childrenRootElement.getElementsByTagName(ROOT_ELEMENT_TAG_NAME);
-        for (int i = 0; i < childrenRootElement.getChildNodes().getLength(); i++) {
+        for (int i = 0; i < childrenElements.getLength(); i++) {
             Node childNode = childrenElements.item(i);
             if (childNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element childElement = (Element)childNode;
